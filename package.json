@@ -1,0 +1,29 @@
+{
+  "name": "tagspewer",
+  "version": "0.0.1",
+  "description": "Spews text from pos-tagged templates given a pos-tagged lexicon. Plus tools.",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt nodeunit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:michaelpaulukonis/tagspewer.git"
+  },
+  "author": "Michael Paulukonis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/michaelpaulukonis/tagspewer/issues"
+  },
+  "engines": {
+    "node": "0.12.0"
+  },
+  "dependencies": {
+    "commander": "~2.7.1",
+    "pos": "~0.1.7-2",
+    "underscore": "~1.8.2"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.4"
+  }
+}
