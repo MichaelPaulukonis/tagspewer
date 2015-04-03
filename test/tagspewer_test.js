@@ -1,6 +1,10 @@
 'use strict';
 
-var spewer = require('../lib/spewer.js');
+
+
+var lexicon = require('../lib/lexicon.js');
+var Spew = require('../lib/tagspewer.js');
+var spewer = new Spew(lexicon);
 
 /*
   ======== A Handy Little Nodeunit Reference ========
