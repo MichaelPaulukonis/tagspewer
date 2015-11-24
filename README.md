@@ -30,10 +30,11 @@ NN VBP IN PRP IN NN:::I am with you in Rockland
 IN PRP$ NNS PRP VB VBG IN DT NN IN DT NN IN NNP IN NNS TO DT NN IN PRP$ NN IN DT JJ NN:::in my dreams you walk dripping from a sea-journey on the highway across America in tears to the door of my cottage in the Western night
 ```
 
-`I'm` was expanded to `I am` to improve legibility.
-TODO: make this optional
-TODO: test
-TODO: expand this behavior
+`I'm` was expanded to `I am` to improve legibility. The original text is appended to the template for reference only. The template and the original text are separated by 3 colons `:::`
+
+ - TODO: make this optional
+ - TODO: test
+ - TODO: expand this behavior
 
 Likewise, `process -j -i source.txt -o sample.json` yeilds:
 
@@ -124,3 +125,7 @@ In my tears you walk dripping in a night across a sea-journey in America in tear
   - ..... the normalizer function takes tokens
   - but there is nothing to make acceptable tokens, as all the tokenizer split on punctuation.
    - AAAARGH
+ - testing - this will require some rework of the library, but I think the command-line front-ends can all point to the same code module, making things much easier to test. Or maybe multiple modules. Keep 'em small. But tests will help demonstrate (non-command-line) usage.
+ - TODO: preserve whitespace (line-breaks are kept, but leading whitespace is discarded)
+  - Do I really care about this?
+ - TODO: take in text as parameters -- to produce template; not sure how we'd take in a lexicon on the command-line, though; but we could take in text and the name of a lexicon? or use a default (as still seen in `spewer`?)
