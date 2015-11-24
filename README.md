@@ -22,3 +22,6 @@ TODO: documentation on `index.js`
   - https://hackage.haskell.org/package/tokenize-0.3.0/docs/src/NLP-Tokenize-Text.html
   - looks like Node Natural has an "English Normalizer" built-in: https://github.com/NaturalNode/natural/issues/82
   - if we're doing this as node, why not require natural?
+  - ..... the normalizer function takes tokens
+  - but there is nothing to make acceptable tokens, as all the tokenizer split on punctuation.
+   - AAAARGH
