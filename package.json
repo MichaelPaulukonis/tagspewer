@@ -4,7 +4,8 @@
   "description": "Spews text from pos-tagged templates given a pos-tagged lexicon. Plus tools.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/reline.tests.js"
+    "test-old": "mocha test/reline.tests.js",
+    "test": "mocha test/*.js"
   },
   "repository": {
     "type": "git",
