@@ -4,7 +4,7 @@
   "description": "Spews text from pos-tagged templates given a pos-tagged lexicon. Plus tools.",
   "main": "index.js",
   "scripts": {
-    "test": "grunt nodeunit"
+    "test": "mocha test/reline.tests.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,8 @@
     "underscore": "~1.8.2"
   },
   "devDependencies": {
+    "chai": "^3.4.0",
+    "mocha": "^2.3.3",
     "grunt-contrib-jshint": "~0.6.4",
     "grunt-contrib-nodeunit": "~0.2.0",
     "grunt-contrib-watch": "~0.5.3",
