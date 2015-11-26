@@ -30,11 +30,12 @@ NN VBP IN PRP IN NN:::I am with you in Rockland
 IN PRP$ NNS PRP VB VBG IN DT NN IN DT NN IN NNP IN NNS TO DT NN IN PRP$ NN IN DT JJ NN:::in my dreams you walk dripping from a sea-journey on the highway across America in tears to the door of my cottage in the Western night
 ```
 
-`I'm` was expanded to `I am` to improve legibility. The original text is appended to the template for reference only. The template and the original text are separated by 3 colons `:::`
+`I'm` was expanded to `I am` to improve legibility (see notes, below, on expansion)
+The original text is appended to the template for reference only.
+The template and the original text are separated by 3 colons `:::`
 
- - TODO: make this optional
- - TODO: test
- - TODO: expand this behavior
+TODO: make this into a JSON array, with template and original text as separate keys
+
 
 Likewise, `process -j -i source.txt -o sample.json` yeilds:
 
@@ -129,3 +130,54 @@ In my tears you walk dripping in a night across a sea-journey in America in tear
  - TODO: preserve whitespace (line-breaks are kept, but leading whitespace is discarded)
   - Do I really care about this?
  - TODO: take in text as parameters -- to produce template; not sure how we'd take in a lexicon on the command-line, though; but we could take in text and the name of a lexicon? or use a default (as still seen in `spewer`?)
+
+
+# contraction expansion, possesives, and (un)known entities
+
+ - TODO: make this a separate module
+ - TODO: test
+ - TODO: expand this behavior
+  - (`process.js` currently uses the conversionTable, but not the rules)
+  - Wikipedia has a large list of contractions - they might be handled by the rules, however
+ - TODO: make this optional
+
+found this, essentially, inside of node's [Natural](https://github.com/NaturalNode/natural) module, specifically, the [normalizer.js](https://github.com/NaturalNode/natural/blob/master/lib/natural/normalizers/normalizer.js) module.
+
+Unfortunately, it takes in tokens, and there is no extant Natural tokenizer that will produce tokens of such a form as `can't`
+
+
+
+```
+var conversionTable = {
+	"can't":"can not",
+	"won't":"will not",
+	"couldn't've":"could not have",
+	"i'm":"I am",
+	"how'd":"how did"
+};
+
+var rules = [
+	{ regex: /([azAZ]*)n\'[tT]/g, output: "$1 not" },
+	{ regex: /([azAZ]*)\'[sS]/g, output: "$1 is" },
+	{ regex: /([azAZ]*)\'[lL][lL]/g, output: "$1 will" },
+	{ regex: /([azAZ]*)\'[rR][eE]/g, output: "$1 are" },
+	{ regex: /([azAZ]*)\'[vV][eE]/g, output: "$1 have" },
+	{ regex: /([azAZ]*)\'[dD]/g, output: "$1 would" }
+];
+
+```
+
+
+## name recognition
+
+Goes all to heck, especially on things like `Kim Il Sung`
+
+I don't know of any tokenizer that takes a whitelist of known phrases and their pos-tag, so this is probably best handled post-tagging, comparing the original text to the tags. Might be complicated?
+
+## Possessive
+
+awkward - since `John's` gets converted to 2 tags `['John', 's']` and can be replaced by anything, which is usually weird.
+
+TODO: examples
+
+The solution... might be the same as with names - post-tag-processing
