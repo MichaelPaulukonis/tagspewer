@@ -42,39 +42,22 @@ Likewise, `process -j -i source.txt -o sample.json` yeilds:
 ```
 {
   "NN": [
-    "I",
-    "Rockland",
-    "cottage",
-    "door",
-    "highway",
-    "night",
-    "sea-journey"
+    "I", "Rockland", "cottage", "door", "highway", "night", "sea-journey"
   ],
   "VBP": [
     "am"
   ],
   "IN": [
-    "across",
-    "from",
-    "in",
-    "in",
-    "in",
-    "in",
-    "of",
-    "on",
-    "with"
+    "across", "from", "in", "in", "in", "in", "of", "on", "with"
   ],
   "PRP": [
-    "you",
-    "you"
+    "you", "you"
   ],
   "PRP$": [
-    "my",
-    "my"
+    "my", "my"
   ],
   "NNS": [
-    "dreams",
-    "tears"
+    "dreams", "tears"
   ],
   "VB": [
     "walk"
@@ -83,10 +66,7 @@ Likewise, `process -j -i source.txt -o sample.json` yeilds:
     "dripping"
   ],
   "DT": [
-    "a",
-    "the",
-    "the",
-    "the"
+    "a", "the", "the", "the"
   ],
   "NNP": [
     "America"
@@ -143,6 +123,10 @@ In my tears you walk dripping in a night across a sea-journey in America in tear
 
 found this, essentially, inside of node's [Natural](https://github.com/NaturalNode/natural) module, specifically, the [normalizer.js](https://github.com/NaturalNode/natural/blob/master/lib/natural/normalizers/normalizer.js) module.
 
+
+ - http://stackoverflow.com/questions/19790188/expanding-english-language-contractions-in-python
+  - https://en.wikipedia.org/wiki/Wikipedia%3aList_of_English_contractions
+
 Unfortunately, it takes in tokens, and there is no extant Natural tokenizer that will produce tokens of such a form as `can't`
 
 
@@ -178,6 +162,21 @@ I don't know of any tokenizer that takes a whitelist of known phrases and their 
 
 awkward - since `John's` gets converted to 2 tags `['John', 's']` and can be replaced by anything, which is usually weird.
 
-TODO: examples
+```
+IN IN DT JJ NNS IN NNP " PRP NN , WP$
+throughout with those giddy shapes of Pitman's shorthand, whose
+```
+
+where we see `Pitman's` => `NNP " PRP`
+
+in the `PRP` tag-bag, there will a whole bunch of "s"s, with other non-useful replacements in the possessive context:
+
+```
+  "PRP": [
+    "They", "They", "They", "They", "he", "it", "it", "it", "itself", "me", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "them", "them", "them", "you", "you"
+  ],
+```
+
+alternate case: `our own souls' airplanes` => `PRP$ JJ NNS " NNS`
 
 The solution... might be the same as with names - post-tag-processing
