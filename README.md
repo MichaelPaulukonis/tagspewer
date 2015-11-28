@@ -9,8 +9,7 @@ Based on Darius Kazemi's [spewer](https://github.com/dariusk/spewer).
  - `process -j -i d:\temp\purple.cloud.txt -o purple.json`
  - `process -t -i d:\temp\purple.cloud.txt -o purple.tmpl`
 
-TODO: documentation on `index.js`
-
+TODO: more documentation on `index.js`
 
 take this source file (`source.txt`):
 
@@ -96,8 +95,8 @@ In my tears you walk dripping in a night across a sea-journey in America in tear
 
 # TODOs
  - (better) documentation
- - TODO: auto-minimize json file (no spaces, but each tag on sep. line. or something) That saved me nearly 50%
- - (optionally) expand contractions first?
+ - TODO: auto-minimize json file (no spaces, but each tag on sep. line. or something) That saved me nearly 50% (done-ish, not optional)
+ - (optionally) expand contractions first? (donish, not optional)
   - http://stackoverflow.com/questions/19790188/expanding-english-language-contractions-in-python
   - https://en.wikipedia.org/wiki/Wikipedia%3aList_of_English_contractions
   - https://hackage.haskell.org/package/tokenize-0.3.0/docs/src/NLP-Tokenize-Text.html
@@ -110,7 +109,9 @@ In my tears you walk dripping in a night across a sea-journey in America in tear
  - TODO: preserve whitespace (line-breaks are kept, but leading whitespace is discarded)
   - Do I really care about this?
  - TODO: take in text as parameters -- to produce template; not sure how we'd take in a lexicon on the command-line, though; but we could take in text and the name of a lexicon? or use a default (as still seen in `spewer`?)
-
+ - TODO: single point of entry for various modules
+ - TODO: assume template ends with .tmpl assume pos-bag ends with .json
+  - error, of course, if not found
 
 # contraction expansion, possesives, and (un)known entities
 
@@ -157,6 +158,9 @@ var rules = [
 Goes all to heck, especially on things like `Kim Il Sung`
 
 I don't know of any tokenizer that takes a whitelist of known phrases and their pos-tag, so this is probably best handled post-tagging, comparing the original text to the tags. Might be complicated?
+
+We might want to do PRE-processing, to condense multi-part (known) names down to a single tag-unit, then re-expand post tagging. If expansion is needed at all?
+
 
 ## Possessive
 
