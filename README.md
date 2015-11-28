@@ -184,3 +184,17 @@ in the `PRP` tag-bag, there will a whole bunch of "s"s, with other non-useful re
 alternate case: `our own souls' airplanes` => `PRP$ JJ NNS " NNS`
 
 The solution... might be the same as with names - post-tag-processing
+
+
+# session use example
+with neuromancer and moby dick (in samples), run from the lib dir
+
+```
+process -j -i ..\samples\neuromancer.txt -o ..\samples\neuromancer.json
+
+process -t -i ..\samples\neuromancer.txt -o ..\samples\neuromancer.tmpl
+
+index -t ..\samples\moby.dick.tmpl -p ..\samples\neuromancer.json -o ..\samples mobymancer.02.txt
+
+index -t ..\samples\neuromancer.tmpl -p ..\samples\moby.dick.json -o ..\samples\neruodick.02.txt
+```
