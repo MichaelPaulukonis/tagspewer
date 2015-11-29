@@ -112,13 +112,16 @@ In my tears you walk dripping in a night across a sea-journey in America in tear
  - TODO: single point of entry for various modules
  - TODO: assume template ends with .tmpl assume pos-bag ends with .json
   - error, of course, if not found
+ - TODO: look into converting catseye/cpressey's [T-Rext](https://github.com/catseye/T-Rext/blob/master/src/t_rext/processors.py)
+  - it's a text-cleaner
+
 
 # contraction expansion, possesives, and (un)known entities
 
- - TODO: make this a separate module
- - TODO: test
+ - DONE: make this a separate module
+ - DONE: test [crudely]
  - TODO: expand this behavior
-  - (`process.js` currently uses the conversionTable, but not the rules)
+  - (`process.js` currently uses the conversionTable, but not the rules - DONE)
   - Wikipedia has a large list of contractions - they might be handled by the rules, however
  - TODO: make this optional
 
@@ -127,30 +130,6 @@ found this, essentially, inside of node's [Natural](https://github.com/NaturalNo
 
  - http://stackoverflow.com/questions/19790188/expanding-english-language-contractions-in-python
   - https://en.wikipedia.org/wiki/Wikipedia%3aList_of_English_contractions
-
-Unfortunately, it takes in tokens, and there is no extant Natural tokenizer that will produce tokens of such a form as `can't`
-
-
-
-```
-var conversionTable = {
-	"can't":"can not",
-	"won't":"will not",
-	"couldn't've":"could not have",
-	"i'm":"I am",
-	"how'd":"how did"
-};
-
-var rules = [
-	{ regex: /([azAZ]*)n\'[tT]/g, output: "$1 not" },
-	{ regex: /([azAZ]*)\'[sS]/g, output: "$1 is" },
-	{ regex: /([azAZ]*)\'[lL][lL]/g, output: "$1 will" },
-	{ regex: /([azAZ]*)\'[rR][eE]/g, output: "$1 are" },
-	{ regex: /([azAZ]*)\'[vV][eE]/g, output: "$1 have" },
-	{ regex: /([azAZ]*)\'[dD]/g, output: "$1 would" }
-];
-
-```
 
 
 ## name recognition
@@ -196,5 +175,5 @@ process -t -i ..\samples\neuromancer.txt -o ..\samples\neuromancer.tmpl
 
 index -t ..\samples\moby.dick.tmpl -p ..\samples\neuromancer.json -o ..\samples mobymancer.02.txt
 
-index -t ..\samples\neuromancer.tmpl -p ..\samples\moby.dick.json -o ..\samples\neruodick.02.txt
+index -t ..\samples\neuromancer.tmpl -p ..\samples\moby.dick.json -o ..\samples\neurodick.02.txt
 ```
