@@ -105,16 +105,26 @@ In my tears you walk dripping in a night across a sea-journey in America in tear
   - ..... the normalizer function takes tokens
   - but there is nothing to make acceptable tokens, as all the tokenizer split on punctuation.
    - AAAARGH
+ - however, if I'm tokenizing according to my own crappy regex, and passing to _my_ normalizer, why not pass _those_ tokens to Natural, if it exists?
  - testing - this will require some rework of the library, but I think the command-line front-ends can all point to the same code module, making things much easier to test. Or maybe multiple modules. Keep 'em small. But tests will help demonstrate (non-command-line) usage.
  - TODO: preserve whitespace (line-breaks are kept, but leading whitespace is discarded)
   - Do I really care about this?
  - TODO: take in text as parameters -- to produce template; not sure how we'd take in a lexicon on the command-line, though; but we could take in text and the name of a lexicon? or use a default (as still seen in `spewer`?)
  - TODO: single point of entry for various modules
- - TODO: assume template ends with .tmpl assume pos-bag ends with .json
+ - TODO: assume template ends with `.tmpl` assume pos-bag ends with `.json`
   - error, of course, if not found
+ - TODO: option to generate both pos-tag-bag and template in one-pass
  - TODO: look into converting catseye/cpressey's [T-Rext](https://github.com/catseye/T-Rext/blob/master/src/t_rext/processors.py)
   - it's a text-cleaner
-
+ - TODO: keep original template punctuation? It's weird to drop it into a tag-bag. And solves sooooo many problems.
+ - TODO: once a replacement word is picked, keep using that for the same original word ?
+  - is this beyond scope?
+  - store tag and original word, so template becomes
+   - {tag: 'NN', word: 'tomb'}
+   - or some other model that takes up less space
+   - we could drop the whole `:::<original text>` thing for this model
+  - processor would have to be able to recognize which form of template has been provided
+ - TODO: the main module version of spewer should be able to take a template as a string or array
 
 # contraction expansion, possesives, and (un)known entities
 
