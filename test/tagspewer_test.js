@@ -6,6 +6,8 @@ var lexicon = require('../lib/lexicon.js');
 var Spew = require('../lib/tagspewer.js');
 var spewer = new Spew(lexicon);
 
+// TODO: testis where lexicon IS THE DEFAULT - becuase it doesn't work
+
 /*
   ======== A Handy Little Nodeunit Reference ========
   https://github.com/caolan/nodeunit

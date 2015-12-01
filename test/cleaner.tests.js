@@ -28,12 +28,18 @@ var tester = function() {
     });
 
     it('should remove space before quotation marks at end of line.', function() {
+      // NOT GONNA HAPPEN
+      // since the sentence-tokenizer does this: [ 'This acument.', '"' ]
       expect(cleaner('This acumen.  "')).to.equal('This acumen."');
       expect(cleaner('This acumen.  \'')).to.equal('This acumen.\'');
     });
 
     it('should capitalize the first letter of a sentence.', function() {
       expect(cleaner('like this.')).to.equal('Like this.');
+    });
+
+    it('should capitalize the first letter of each sentence in a paragraph.', function() {
+      expect(cleaner('like this. and this.')).to.equal('Like this. And this.');
     });
 
   });

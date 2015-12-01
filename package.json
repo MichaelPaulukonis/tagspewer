@@ -21,6 +21,7 @@
   "dependencies": {
     "commander": "~2.7.1",
     "pos": "~0.1.7-2",
+    "sentence-tokenizer": "0.0.7",
     "underscore": "~1.8.2"
   },
   "devDependencies": {
