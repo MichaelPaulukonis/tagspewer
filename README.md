@@ -5,6 +5,36 @@ Based on Darius Kazemi's [spewer](https://github.com/dariusk/spewer).
 
 
 # usage
+
+Call `tagspewer.spew(tags)`, where `tags` is a space-delimited string of part of speech tags, as defined below. This will return a string of matching words.
+
+    CC Coord Conjuncn           and,but,or
+    IN Preposition              of,in,by
+    JJ Adjective                big
+    JJR Adj., comparative       bigger
+    JJS Adj., superlative       biggest
+    MD Modal                    can,should
+    NN Noun, sing. or mass      dog
+    NNP Proper noun, sing.      Edinburgh
+    NNPS Proper noun, plural    Smiths
+    NNS Noun, plural            dogs
+    PDT Predeterminer           all, both
+    PRP Personal pronoun         I,you,she
+    RB Adverb                   quickly
+    RBR Adverb, comparative     faster
+    RBS Adverb, superlative     fastest
+    RP Particle                 up,off
+    VB verb, base form          eat
+    VBD verb, past tense        ate
+    VBG verb, gerund            eating
+    VBN verb, past part         eaten
+    VBP Verb, present           eat
+    VBZ Verb, present           eats
+    WDT Wh-determiner           which,that
+    WP Wh pronoun               who,what
+    WRB Wh-adverb               how,where
+
+
 ## generate lexicon and template files
  - `process -j -i d:\temp\purple.cloud.txt -o purple.json`
  - `process -t -i d:\temp\purple.cloud.txt -o purple.tmpl`
@@ -125,6 +155,9 @@ In my tears you walk dripping in a night across a sea-journey in America in tear
    - we could drop the whole `:::<original text>` thing for this model
   - processor would have to be able to recognize which form of template has been provided
  - TODO: the main module version of spewer should be able to take a template as a string or array
+ - TODO: clean up the default lexicon
+  - this was part of Kazemi's original [spewer](https://github.com/dariusk/spewer) code, but has some ... interesting "features"
+
 
 # contraction expansion, possesives, and (un)known entities
 

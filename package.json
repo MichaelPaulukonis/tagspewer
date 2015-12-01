@@ -4,7 +4,8 @@
   "description": "Spews text from pos-tagged templates given a pos-tagged lexicon. Plus tools.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/"
+    "test": "mocha test/",
+    "test_spewer": "mocha test/tagspewer_test.js"
   },
   "repository": {
     "type": "git",

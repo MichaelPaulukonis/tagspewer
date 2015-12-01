@@ -2,44 +2,65 @@
 
 
 
-var lexicon = require('../lib/lexicon.js');
-var Spew = require('../lib/tagspewer.js');
-var spewer = new Spew(lexicon);
+// var lexicon = require('../lib/lexicon.js');
+// var Spew = require('../lib/tagspewer.js');
+// var spewer = new Spew(lexicon);
 
-// TODO: testis where lexicon IS THE DEFAULT - becuase it doesn't work
+// // TODO: testis where lexicon IS THE DEFAULT - becuase it doesn't work
 
-/*
-  ======== A Handy Little Nodeunit Reference ========
-  https://github.com/caolan/nodeunit
+// exports['spewer'] = {
+//   setUp: function(done) {
+//     // setup here
+//     done();
+//   },
+//   'basics': function(test) {
+//     test.expect(4);
+//     // tests here
+//     test.equal(typeof spewer, 'object', 'expected an object');
+//     test.equal(typeof spewer.spew, 'function', 'expected `spew` to be a function');
+//     test.equal(spewer.spew('JJ NN').split(' ').length, 2, 'expected 2 words back from "JJ NN"');
+//     test.equal(spewer.spew('junk'), '', 'expected an empty string when passed junk tags');
+//     test.done();
+//   },
+// };
 
-  Test methods:
-    test.expect(numAssertions)
-    test.done()
-  Test assertions:
-    test.ok(value, [message])
-    test.equal(actual, expected, [message])
-    test.notEqual(actual, expected, [message])
-    test.deepEqual(actual, expected, [message])
-    test.notDeepEqual(actual, expected, [message])
-    test.strictEqual(actual, expected, [message])
-    test.notStrictEqual(actual, expected, [message])
-    test.throws(block, [error], [message])
-    test.doesNotThrow(block, [error], [message])
-    test.ifError(value)
-*/
+var tester = function() {
 
-exports['spewer'] = {
-  setUp: function(done) {
-    // setup here
-    done();
-  },
-  'basics': function(test) {
-    test.expect(4);
-    // tests here
-    test.equal(typeof spewer, 'object', 'expected an object');
-    test.equal(typeof spewer.spew, 'function', 'expected `spew` to be a function');
-    test.equal(spewer.spew('JJ NN').split(' ').length, 2, 'expected 2 words back from "JJ NN"');
-    test.equal(spewer.spew('junk'), '', 'expected an empty string when passed junk tags');
-    test.done();
-  },
-};
+  var mocha = require('mocha'),
+      chai = require('chai'),
+      expect = chai.expect,
+      Tagspewer = require('../lib/tagspewer'),
+      spewer = new Tagspewer(),
+      lexicon = require('../lib/lexicon.js');
+
+  describe('tagspewer tests', function() {
+
+    it('Tagspewer should be a function', function() {
+      expect(Tagspewer).to.be.an('function');
+    });
+
+    it('should return an object', function() {
+      expect(spewer).to.be.an('object');
+    });
+
+    it('should have a spew method', function() {
+      expect(spewer.spew).to.be.an('function');
+    });
+
+    it('should expose a (default) lexicon', function() {
+      expect(spewer.lexicon).to.be.an('object');
+    });
+
+    it('should take in a non-default lexicon, and expose it', function() {
+      var customLexicon = { "NNP": ["whales"] };
+      var customSpewer = new Tagspewer(customLexicon);
+      expect(customSpewer.lexicon).to.equal(customLexicon);
+    });
+
+    // TODO: test output based on custom-lexicon
+
+    // TODO: test that instantiations w/o new still work (as expected)
+
+  });
+
+}();
