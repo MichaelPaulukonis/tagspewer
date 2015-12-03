@@ -1,28 +1,6 @@
 'use strict';
 
-
-
-// var lexicon = require('../lib/lexicon.js');
-// var Spew = require('../lib/tagspewer.js');
-// var spewer = new Spew(lexicon);
-
-// // TODO: testis where lexicon IS THE DEFAULT - becuase it doesn't work
-
-// exports['spewer'] = {
-//   setUp: function(done) {
-//     // setup here
-//     done();
-//   },
-//   'basics': function(test) {
-//     test.expect(4);
-//     // tests here
-//     test.equal(typeof spewer, 'object', 'expected an object');
-//     test.equal(typeof spewer.spew, 'function', 'expected `spew` to be a function');
-//     test.equal(spewer.spew('JJ NN').split(' ').length, 2, 'expected 2 words back from "JJ NN"');
-//     test.equal(spewer.spew('junk'), '', 'expected an empty string when passed junk tags');
-//     test.done();
-//   },
-// };
+// http://chaijs.com/api/bdd/
 
 var tester = function() {
 
@@ -31,7 +9,13 @@ var tester = function() {
       expect = chai.expect,
       Tagspewer = require('../lib/tagspewer'),
       spewer = new Tagspewer(),
-      lexicon = require('../lib/lexicon.js');
+      lexicon = require('../lib/lexicon.js'),
+      smallLex = {
+        "NN":  ["cat"],
+        "VBZ": ["sits"],
+        "DT":  ["the"],
+        "RBR": ["on"]
+      };
 
   describe('tagspewer tests', function() {
 
@@ -57,7 +41,32 @@ var tester = function() {
       expect(customSpewer.lexicon).to.equal(customLexicon);
     });
 
-    // TODO: test output based on custom-lexicon
+    describe('spew tests', function() {
+
+      it('should return empty string with no parameters', function() {
+        var actual = spewer.spew();
+        var expected = '';
+        expect(actual).to.be.an('string');
+        expect(actual).to.equal(expected);
+      });
+
+      it('should return requested tags', function() {
+        var smallSpewer = new Tagspewer(smallLex);
+        var singleTagOutput = smallSpewer.spew('VBZ');
+        var doubleTagOutput = smallSpewer.spew('VBZ RBR');
+        expect(singleTagOutput).to.equal('sits');
+        expect(doubleTagOutput).to.equal('sits on');
+      });
+
+      it('should return unkown tags in-place', function() {
+        var smallSpewer = new Tagspewer(smallLex);
+        var templateWithNonTags = 'The NN sits on the futon.';
+        var expected = 'The cat sits on the futon.';
+        var actual = smallSpewer.spew(templateWithNonTags);
+        expect(actual).to.equal(expected);
+      });
+
+    });
 
     // TODO: test that instantiations w/o new still work (as expected)
 
