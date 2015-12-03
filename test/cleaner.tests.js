@@ -23,8 +23,12 @@ var tester = function() {
       expect(cleaner('I am this.')).to.equal('I am this.');
     });
 
-    it('should clean up spaces and quotation marks.', function() {
-      expect(cleaner('I am \' he \' .')).to.equal('I am \'he\'.');
+    it('should clean up spaces with single quotation marks.', function() {
+      expect(cleaner('I am \' a good man \' he said.')).to.equal('I am \'a good man\' he said.');
+    });
+
+    it('should clean up spaces with double quotation marks.', function() {
+      expect(cleaner('I am " a good man " he said.')).to.equal('I am "a good man" he said.');
     });
 
     it('should remove space before quotation marks at end of line.', function() {

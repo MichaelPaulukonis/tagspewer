@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha test/",
-    "test_spewer": "mocha test/tagspewer_test.js"
+    "test_spewer": "mocha test/tagspewer_test.js",
+    "test_cleaner": "mocha test/cleaner.tests.js",
+    "test_normalize": "mocha test/normalize.tests.js",
+    "test_reline": "mocha test/reline.tests.js"
   },
   "repository": {
     "type": "git",
