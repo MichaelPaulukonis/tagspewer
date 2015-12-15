@@ -8,7 +8,8 @@
     "test_spewer": "mocha test/tagspewer_test.js",
     "test_cleaner": "mocha test/cleaner.tests.js",
     "test_normalize": "mocha test/normalize.tests.js",
-    "test_reline": "mocha test/reline.tests.js"
+    "test_reline": "mocha test/reline.tests.js",
+    "test_templatize": "mocha test/templatize.tests.js"
   },
   "repository": {
     "type": "git",

@@ -27,8 +27,16 @@ var tester = function() {
       expect(reline(sample).length).to.be.at.least(1);
     });
 
-    it('should return an array of lines when config lineArray is true', function() {
+    it('should return an array of lines when config.lineArray is true', function() {
         expect(Array.isArray(reline(sample, arrayConfig))).to.equal(true);
+    });
+
+    it('should NOT return an array of lines when config.lineArray is false', function() {
+        expect(Array.isArray(reline(sample, { lineArray: false}))).to.equal(false);
+    });
+
+    it('should NOT return an array of lines when config is not provided', function() {
+        expect(Array.isArray(reline(sample))).to.equal(false);
     });
 
     it('should return two lines for two paragaphs by default.', function() {
