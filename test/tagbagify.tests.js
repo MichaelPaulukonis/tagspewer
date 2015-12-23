@@ -7,34 +7,34 @@ var tester = function() {
   var mocha = require('mocha'),
       chai = require('chai'),
       expect = chai.expect,
-      Tagbagger = require('../lib/tagbagger'),
-      tagbagger = new Tagbagger(),
+      Tagbagify = require('../lib/tagbagify'),
+      tagbagify = new Tagbagify(),
       sample = 'I am with you in Rockland';
 
 
-  describe('tagbagger tests', function() {
+  describe('tagbagify tests', function() {
 
     describe('API tests', function() {
 
 
       it('should return a new instance with new', function() {
-        var nt = new Tagbagger();
+        var nt = new Tagbagify();
         expect(nt).to.be.a('object');
-        expect(nt).to.be.an.instanceof(Tagbagger);
+        expect(nt).to.be.an.instanceof(Tagbagify);
       });
 
       it('should return a new instance even without new', function() {
-        var t = Tagbagger();
+        var t = Tagbagify();
         expect(t).to.be.a('object');
-        expect(t).to.be.an.instanceof(Tagbagger);
+        expect(t).to.be.an.instanceof(Tagbagify);
       });
 
       it('should expose a processText method', function() {
-        expect(tagbagger.processText).to.be.a('function');
+        expect(tagbagify.processText).to.be.a('function');
       });
 
       it('should expose a processFile method', function() {
-        expect(tagbagger.processFile).to.be.a('function');
+        expect(tagbagify.processFile).to.be.a('function');
       });
 
     });
@@ -44,12 +44,12 @@ var tester = function() {
       // this is a bit unweildly
       // and maybe should be broken out...
       it('should return an object with a non-zero number of properties when provided with non-zero-length text', function() {
-        var templ = tagbagger.processText(sample);
+        var templ = tagbagify.processText(sample);
         expect(templ).to.be.an('object');
       });
 
       it('should have properties whose values is array of string when provided with non-zero-length text', function() {
-        var templ = tagbagger.processText(sample);
+        var templ = tagbagify.processText(sample);
         var keys = Object.keys(templ);
         var aProperty = templ[keys[0]];
         expect(aProperty).to.be.an('array');

@@ -7,25 +7,25 @@ var tester = function() {
   var mocha = require('mocha'),
       chai = require('chai'),
       expect = chai.expect,
-      Templatize = require('../lib/templatize'),
-      templatize = new Templatize(),
+      Templatify = require('../lib/templatify'),
+      teamplatify = new Templatify(),
       sample = 'I am with you in Rockland',
       samplePOS = 'NN VBP IN PRP IN NN',
       sampleTemplate = 'NN VBP IN PRP IN NN:::I am with you in Rockland';
 
 
-  describe('Templatize tests', function() {
+  describe('templatify tests', function() {
 
     describe('API tests', function() {
 
-      // expect(templatize).to.be.an.instanceof(Templatize);
+      // expect(teamplatify).to.be.an.instanceof(templatify);
 
       it('should expose a processText method', function() {
-        expect(templatize.processText).to.be.a('function');
+        expect(teamplatify.processText).to.be.a('function');
       });
 
       it('should expose a processFile method', function() {
-        expect(templatize.processFile).to.be.a('function');
+        expect(teamplatify.processFile).to.be.a('function');
       });
 
     });
@@ -33,7 +33,7 @@ var tester = function() {
     describe('processText tests', function() {
 
       it('should return an non-zero-length array of string when provided with text', function() {
-        var templ = templatize.processText(sample);
+        var templ = teamplatify.processText(sample);
         expect(templ).to.be.an('array');
         expect(templ).to.have.length.above(0);
         expect(typeof templ[0]).to.be.a('string');

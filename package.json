@@ -9,8 +9,8 @@
     "test_cleaner":    "mocha test/cleaner.tests.js",
     "test_normalize":  "mocha test/normalize.tests.js",
     "test_reline":     "mocha test/reline.tests.js",
-    "test_templatize": "mocha test/templatize.tests.js",
-    "test_tagbagger":  "mocha test/tagbagger.tests.js"
+    "test_templatify": "mocha test/templatify.tests.js",
+    "test_tagbagify":  "mocha test/tagbagify.tests.js"
   },
   "repository": {
     "type": "git",

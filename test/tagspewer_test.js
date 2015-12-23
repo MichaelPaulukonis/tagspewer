@@ -80,7 +80,7 @@ var tester = function() {
         expect(doubleTagOutput).to.equal('sits on');
       });
 
-      it('should return unkown tags in-place', function() {
+      it('should return known tags in-place', function() {
         var smallSpewer = new Tagspewer(smallLex);
         var templateWithNonTags = 'The NN sits on the futon.';
         var expected = 'The cat sits on the futon.';
@@ -88,19 +88,44 @@ var tester = function() {
         expect(actual).to.equal(expected);
       });
 
-      it('should ignore known-tags NOT surrounded by whitespace', function() {
+      it('should return unknown tags in-place', function() {
         var smallSpewer = new Tagspewer(smallLex);
-        var templateNoTags = 'The -NN- sits on the futon.';
-        var expected = 'The -NN- sits on the futon.';
-        var actual = smallSpewer.spew(templateNoTags);
+        var templateWithNonTags = 'The QZ sits on the futon.';
+        var expected = 'The QZ sits on the futon.';
+        var actual = smallSpewer.spew(templateWithNonTags);
         expect(actual).to.equal(expected);
       });
 
-      it('should recognize tags surrounded by TABs', function() {
+      // WHY is this?
+      // WORDS
+      it('should ignore known-tags NOT surrounded by whitespace', function() {
         var smallSpewer = new Tagspewer(smallLex);
-        var templateTabs = 'The \tNN\t sits on the futon.';
-        var expected = 'The \tcat\t sits on the futon.';
+        var templateNoTags = 'The -NN- sits on the futon.';
+        var templateCAPS = 'The UNNI sits on the futon.';
+
+        var actual = smallSpewer.spew(templateNoTags);
+        expect(actual).to.equal(templateNoTags);
+
+        actual = smallSpewer.spew(templateCAPS);
+        expect(actual).to.equal(templateCAPS);
+
+      });
+
+      // known failure
+      it('should recognize tags surrounded by mixed whitespace', function() {
+        var smallSpewer = new Tagspewer(smallLex);
+        var templateTabs = 'The\tNN\tsits on the futon.';
+        var templateMixed = 'The \tNN\t  sits on the futon.';
+        var templateSpaces = 'The NN   sits on the futon.';
+        var expected = 'The cat sits on the futon.';
+
         var actual = smallSpewer.spew(templateTabs);
+        expect(actual).to.equal(expected);
+
+        actual = smallSpewer.spew(templateMixed);
+        expect(actual).to.equal(expected);
+
+        actual = smallSpewer.spew(templateSpaces);
         expect(actual).to.equal(expected);
       });
 
