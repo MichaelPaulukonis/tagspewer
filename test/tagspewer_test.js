@@ -129,12 +129,14 @@ var tester = function() {
         expect(actual).to.equal(expected);
       });
 
+      // TODO: tests for cleaner param
       it('should use a custom lexicon when provided', function() {
         let spewer = new Tagspewer({ 'NN': ['cat']}),
             lexicon = { 'NN': ['whale'] },
             template = 'NN',
             expected = 'whale',
-            actual = spewer.spew(template, lexicon);
+            clean = false,
+            actual = spewer.spew(template, lexicon, clean);
         expect(actual).to.equal(expected);
       });
 
