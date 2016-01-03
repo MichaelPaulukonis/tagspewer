@@ -135,8 +135,9 @@ var tester = function() {
             lexicon = { 'NN': ['whale'] },
             template = 'NN',
             expected = 'whale',
-            clean = false,
-            actual = spewer.spew(template, lexicon, clean);
+            // clean = false,
+            opts = { template: template, lexicon: lexicon, clean: false },
+            actual = spewer.spew(opts);
         expect(actual).to.equal(expected);
       });
 
@@ -147,7 +148,8 @@ var tester = function() {
             lexiconCustom = { 'NN': ['whale'] },
             template = 'NN',
             expectedCustom = 'whale',
-            actualCustom = spewer.spew(template, lexiconCustom),
+            opts = { template: template, lexicon: lexiconCustom },
+            actualCustom = spewer.spew(opts),
             expectedStandard = 'cat',
             actualStandard = spewer.spew(template);
         expect(actualCustom).to.equal(expectedCustom);
