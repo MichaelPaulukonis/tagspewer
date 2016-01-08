@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "commander": "~2.7.1",
+    "natural": "0.2.1",
     "pos": "~0.1.7-2",
     "sentence-tokenizer": "0.0.7",
     "timer-stopwatch": "0.2.0",

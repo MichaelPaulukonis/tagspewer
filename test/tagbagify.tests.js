@@ -33,10 +33,6 @@ var tester = function() {
         expect(tagbagify.processText).to.be.a('function');
       });
 
-      it('should expose a processFile method', function() {
-        expect(tagbagify.processFile).to.be.a('function');
-      });
-
     });
 
     describe('processText tests', function() {

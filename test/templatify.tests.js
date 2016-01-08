@@ -24,10 +24,6 @@ var tester = function() {
         expect(teamplatify.processText).to.be.a('function');
       });
 
-      it('should expose a processFile method', function() {
-        expect(teamplatify.processFile).to.be.a('function');
-      });
-
     });
 
     describe('processText tests', function() {
