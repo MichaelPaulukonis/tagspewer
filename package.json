@@ -1,6 +1,6 @@
 {
   "name": "tagspewer",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Spews text from pos-tagged templates given a pos-tagged lexicon. Plus tools.",
   "main": "index.js",
   "scripts": {
