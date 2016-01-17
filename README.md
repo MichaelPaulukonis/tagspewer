@@ -6,6 +6,19 @@ Based on Darius Kazemi's [spewer](https://github.com/dariusk/spewer).
 
 # usage
 
+```
+var tagspewer = require('tagspewer').tagspewer;
+var cleaner = require('tagspewer').cleaner;
+var tagbagify = require('tagspewer').tagbagify;
+var templatify = require('tagspewer').templatify;
+
+var template = 'DT NN IN DT NN VBD DT NN IN NN , VBN TO DT JJ NN .';
+
+console.log(tagspewer.spew(template));
+```
+
+TODO: instructions on using the (optional) opts object
+
 Call `tagspewer.spew(tags)`, where `tags` is a space-delimited string of part of speech tags, as defined below. This will return a string of matching words.
 
     CC Coord Conjuncn           and,but,or
@@ -19,7 +32,7 @@ Call `tagspewer.spew(tags)`, where `tags` is a space-delimited string of part of
     NNPS Proper noun, plural    Smiths
     NNS Noun, plural            dogs
     PDT Predeterminer           all, both
-    PRP Personal pronoun         I,you,she
+    PRP Personal pronoun        I,you,she
     RB Adverb                   quickly
     RBR Adverb, comparative     faster
     RBS Adverb, superlative     fastest
