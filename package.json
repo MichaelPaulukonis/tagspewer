@@ -26,18 +26,13 @@
   },
   "dependencies": {
     "commander": "~2.7.1",
-    "natural": "0.2.1",
     "pos": "~0.1.7-2",
     "sentence-tokenizer": "0.0.7",
-    "timer-stopwatch": "0.2.0",
     "underscore": "~1.8.2"
   },
   "devDependencies": {
     "chai": "^3.4.0",
     "mocha": "^2.3.3",
-    "grunt-contrib-jshint": "~0.6.4",
-    "grunt-contrib-nodeunit": "~0.2.0",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt": "~0.4.4"
+    "timer-stopwatch": "0.2.0"
   }
 }
