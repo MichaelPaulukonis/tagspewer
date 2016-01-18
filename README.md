@@ -1,13 +1,14 @@
 # tagspewer
 Spew text based on pos-tagged-templates and associated lexicon; includes tools for parsing text and generating templates and lexicon.
 
-Inspired by, and uses the default lexicon from, Darius Kazemi's [spewer](https://github.com/dariusk/spewer)
+Inspired by Darius Kazemi's [spewer](https://github.com/dariusk/spewer). It also includes a default lexicon that is a slightly edited version of Kazemi's, primarily modified to be tag-based.
 
 
 # usage
 
 ```
-var tagspewer = require('tagspewer').tagspewer;
+var Tagspewer = require('tagspewer').tagspewer;
+var tagspewer = new Tagspewer();
 var cleaner = require('tagspewer').cleaner;
 var tagbagify = require('tagspewer').tagbagify;
 var templatify = require('tagspewer').templatify;
@@ -15,11 +16,16 @@ var templatify = require('tagspewer').templatify;
 var template = 'DT NN IN DT NN VBD DT NN IN NN , VBN TO DT JJ NN .';
 
 console.log(tagspewer.spew(template));
+// 'such bullhide post all revaluing collided thees velours foh deadwood , teed gotta either zilch areosol .'
+
+var lexicon = { 'JJ': ['big'], 'NNS': ['bicycles'] };
+console.log(tagspewer.spew({ template: 'This is a JJ pile of NNS .', clean: true, lexicon: lexicon});
+// This is a big pile of bicycles.
 ```
 
 See below for sample lexicon.
 
-Call `tagspewer.spew(tags)`, where `tags` is a space-delimited string of part of speech tags, as defined below. This will return a string of matching words.
+Call `tagspewer.spew(tags)`, where `tags` is a space-delimited string of keywords. A default lexicon is provided with part of speech tags, as defined below. This will return a string of matching words.
 
     CC Coord Conjuncn           and,but,or
     IN Preposition              of,in,by
@@ -49,6 +55,9 @@ Call `tagspewer.spew(tags)`, where `tags` is a space-delimited string of part of
 
 
 ## generate lexicon and template files
+
+The `process.js` file is found inside of `\lib`.
+
  - `process -j -i d:\temp\purple.cloud.txt -o purple.json`
  - `process -t -i d:\temp\purple.cloud.txt -o purple.tmpl`
 
