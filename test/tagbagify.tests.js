@@ -7,7 +7,7 @@ var tester = function() {
   var mocha = require('mocha'),
       chai = require('chai'),
       expect = chai.expect,
-      Tagbagify = require('../lib/tagbagify'),
+      Tagbagify = require('../index.js').tagbagify,
       tagbagify = new Tagbagify(),
       sample = 'I am with you in Rockland';
 

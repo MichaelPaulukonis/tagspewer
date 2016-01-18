@@ -5,7 +5,7 @@ var tester = function() {
   var mocha = require('mocha'),
       chai = require('chai'),
       expect = chai.expect,
-      cleaner = require('../lib/cleaner');
+      cleaner = require('../index.js').cleaner;
 
   describe('cleaner tests', function() {
 

@@ -7,7 +7,7 @@ var tester = function() {
   var mocha = require('mocha'),
       chai = require('chai'),
       expect = chai.expect,
-      Tagspewer = require('../lib/tagspewer'),
+      Tagspewer = require('../index.js').tagspewer,
       spewer = new Tagspewer(),
       lexicon = require('../lib/lexicon.js'),
       // the properties of a lexicon object are reffered to as "tags"

@@ -1,4 +1,4 @@
-module.tagspewer = require('./lib/tagspewer.js');
-module.cleaner = require('./lib/cleaner.js');
-module.tagbagify = require('./lib/tagbagify.js');
-module.templatify = require('./lib/templatify.js');
+exports.tagspewer = require('./lib/tagspewer.js');
+exports.cleaner = require('./lib/cleaner.js');
+exports.tagbagify = require('./lib/tagbagify.js');
+exports.templatify = require('./lib/templatify.js');
